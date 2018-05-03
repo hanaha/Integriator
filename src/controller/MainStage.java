@@ -41,16 +41,17 @@ public class MainStage {
         this.stage = primaryStage;
     }
 
+    /**
+     * Load the new node form into the new node tab.
+     * @throws IOException
+     */
     public void loadNewNodeForm() throws IOException {
         System.out.println("Newformloadingu!!!");
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/nodeEdit.fxml"));
         AnchorPane root = loader.load();
-        NodeEdit controller = loader.getController();
-        System.out.println(controller);
-        System.out.println("DEBUGGU!!!");
-        System.out.println(this.newNodeTabPane);
-        System.out.println("NO DEBUGGU!(!!");
         this.newNodeTabPane.getChildren().add(root);
+
         System.out.println("Newformloadetto!!!");
     }
 
@@ -75,9 +76,7 @@ public class MainStage {
      */
     public void selectExistingWorld(ActionEvent actionEvent) throws IOException {
         // @todo: Load the world data from world files or databases.
-        Object o = this.selectWorld.getValue();
-        World world = new World("Dummy World", "This is a dummy world for a dummy project");
-        this.setWorkingWorld(world);
+        this.setWorkingWorld(new World("Dummy World", "This is a dummy world for a dummy project"));
     }
 
     /**
@@ -116,8 +115,5 @@ public class MainStage {
 
         // @todo: Load the available simulations into the simulations tab.
 
-        // Load the new node form to the new node tab.
-        FXMLLoader nodeFormLoader = new FXMLLoader(getClass().getResource("../view/nodeEdit.fxml"));
-//        this.newNodeTabPane.getChildren().add(new SubScene(nodeFormLoader.load(), this.newNodeTabPane.getWidth(), this.newNodeTabPane.getHeight()));
     }
 }
