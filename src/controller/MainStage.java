@@ -31,7 +31,7 @@ public class MainStage {
     public ChoiceBox selectWorld;
     public TextField name;
     public TextArea description;
-    public Tab newNodeTabPane;
+    public AnchorPane newNodeTabPane;
 
     private World world;
     public AnchorPane root;
@@ -49,8 +49,8 @@ public class MainStage {
         System.out.println(controller);
         System.out.println("DEBUGGU!!!");
         System.out.println(this.newNodeTabPane);
-        System.out.println("NO DEBUGGU!!!");
-        this.newNodeTabPane.setContent(root);
+        System.out.println("NO DEBUGGU!(!!");
+        this.newNodeTabPane.getChildren().add(root);
         System.out.println("Newformloadetto!!!");
     }
 
