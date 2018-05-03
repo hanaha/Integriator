@@ -1,0 +1,9 @@
+.root{
+    -fx-font-size: 1.5em;
+    -fx-font-family: "Ariel Black";
+}
+.hortab {
+    -fx-rotate: 90;
+    -fx-pref-width: 100;
+    -fx-pref-height: 100;
+}
