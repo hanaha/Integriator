@@ -8,10 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.hibernate.Session;
@@ -29,13 +26,20 @@ public class MainStage {
     public Tab tabUnconnectedNodes;
     public Tab tabListVariables;
     public Tab tabNewNode;
-    public Tab tabNewVariable;
     public Tab tabSimulations;
 
     public ChoiceBox selectWorld;
     public TextField name;
     public TextArea description;
     public AnchorPane newNodeTabPane;
+    public AnchorPane variableListTabPane;
+    public TableView variableTable;
+    public TableColumn selectRow;
+    public TableColumn variableName;
+    public ChoiceBox actionOptionsComboBox;
+    public Button actionExecuteButton;
+    public Button addVariableButton;
+    public TextField addVariableTextField;
 
     private World world;
     public AnchorPane root;
@@ -47,6 +51,7 @@ public class MainStage {
 
     /**
      * Load the new node form into the new node tab.
+     *
      * @throws IOException
      */
     public void loadNewNodeForm() throws IOException {
@@ -68,7 +73,7 @@ public class MainStage {
 
         Session session = SessionManager.startSession();
 
-        List result = session.createQuery( "from WorldEntity" ).list();
+        List result = session.createQuery("from WorldEntity").list();
 
         SessionManager.stopSession();
 
@@ -125,10 +130,32 @@ public class MainStage {
         // @todo: Load any unconnected nodes into the unconnected nodes tab.
 
         // @todo: Load the world's variables into the variable tab.
+        this.populateVariableActions();
+        this.populateVariableTable(this.world);
 
         // @todo: Load the new variable form into the new variable tab.
 
         // @todo: Load the available simulations into the simulations tab.
 
+    }
+
+    private void populateVariableTable(World world) {
+        // @todo: get a list of variables.
+    }
+
+    public void executeActionOnSelected(ActionEvent actionEvent) {
+        // @todo: delete the selected variables.
+
+    }
+
+    private void populateVariableActions() {
+        actionOptionsComboBox.getItems().clear();
+        actionOptionsComboBox.getItems().addAll("Delete selected");
+    }
+
+    public void addVariable(ActionEvent actionEvent) {
+        // @todo: Check if variable doesn't exist already.
+        this.addVariableTextField.getText();
+        // @todo: update the table with the new variable.
     }
 }
