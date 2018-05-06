@@ -8,10 +8,13 @@
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainStage">
     <children>
@@ -70,18 +73,30 @@
                 </Tab>
                 <Tab fx:id="tabListVariables" styleClass="hortab" text="List Variables">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane fx:id="variableListTabPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="variableTable" layoutX="14.0" layoutY="86.0" prefHeight="717.0" prefWidth="1131.0">
+                          <columns>
+                              <TableColumn fx:id="selectRow" prefWidth="75.0" resizable="false" sortable="false" text="Select" />
+                            <TableColumn fx:id="variableName" prefWidth="1028.0" resizable="false" text="Variable name" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="14.0" layoutY="14.0" text="The following variables exist in this world:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="actionOptionsComboBox" layoutX="14.0" layoutY="44.0" prefHeight="31.0" prefWidth="199.0" />
+                        <Button fx:id="actionExecuteButton" layoutX="223.0" layoutY="44.0" mnemonicParsing="false" onAction="#executeActionOnSelected" prefHeight="31.0" prefWidth="90.0" text="Execute" />
+                        <TextField fx:id="addVariableTextField" layoutX="14.0" layoutY="838.0" prefHeight="31.0" prefWidth="967.0" promptText="Add a new variable" />
+                        <Button fx:id="addVariableButton" layoutX="995.0" layoutY="838.0" mnemonicParsing="false" onAction="#addVariable" prefHeight="31.0" prefWidth="95.0" text="Add" />
+                     </children></AnchorPane>
                     </content>
                 </Tab>
                 <Tab fx:id="tabNewNode" onSelectionChanged="#loadNewNodeForm" styleClass="hortab" text="New Node">
                <content>
                   <AnchorPane fx:id="newNodeTabPane" prefHeight="200.0" prefWidth="200.0" />
                </content>
-                </Tab>
-                <Tab fx:id="tabNewVariable" styleClass="hortab" text="New Variable">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
                 </Tab>
                 <Tab fx:id="tabSimulations" styleClass="hortab" text="Simulations">
                     <content>
