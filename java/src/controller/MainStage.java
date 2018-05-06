@@ -1,6 +1,8 @@
 package controller;
 
+import data.SessionManager;
 import data.World;
+import data.entity.WorldEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,8 +14,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.hibernate.Session;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Application main stage controller.
@@ -62,8 +66,15 @@ public class MainStage {
     public void initialize() {
         System.out.println("Initializingu!!!");
 
+        Session session = SessionManager.startSession();
+
+        List result = session.createQuery( "from WorldEntity" ).list();
+
+        SessionManager.stopSession();
+
         // @todo: Get a list of available worlds. Is it a file, is it a database? Whatever it is, it doesn't yet exist...
-        ObservableList worlds = FXCollections.observableArrayList("Dummy World");
+
+        ObservableList worlds = FXCollections.observableArrayList(result);
         this.selectWorld.setItems(worlds);
 
         System.out.println("Initializingu ovah!!!");
@@ -86,8 +97,12 @@ public class MainStage {
      */
     public void createNewWorld(ActionEvent actionEvent) throws IOException {
         World world = new World(this.name.getText(), this.description.getText());
-        // @todo: Now store it.
-        // @todo: Now load it.
+
+        Session session = SessionManager.startSession();
+        WorldEntity worldEntity = new WorldEntity(world.getName(), world.getDescription());
+        session.save(worldEntity);
+        SessionManager.stopSession();
+
         this.setWorkingWorld(world);
     }
 
