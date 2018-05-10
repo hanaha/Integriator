@@ -1,5 +1,6 @@
 package data;
 
+import data.entity.CustomEntity;
 import hibernateTest.Event;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -21,6 +22,12 @@ public class SessionManager {
     }
 
     private Session currentSession = null;
+
+    public static <E extends CustomEntity> void saveEntity(E entity){
+        Session session = startSession();
+        session.save(entity);
+        SessionManager.stopSession();
+    }
 
     public static Session startSession(){
         if (instance.currentSession != null){
