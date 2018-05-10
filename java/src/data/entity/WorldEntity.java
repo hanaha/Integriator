@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table( name = "worlds" )
-public class WorldEntity {
+public class WorldEntity implements CustomEntity {
 
     private String name;
     private String description;
