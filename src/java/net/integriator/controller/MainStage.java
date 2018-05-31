@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import net.integriator.data.mapper.WorldMapper;
 import org.hibernate.Session;
 
 import java.io.IOException;
@@ -61,6 +62,8 @@ public class MainStage {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/nodeEdit.fxml"));
         AnchorPane root = loader.load();
+        NodeEdit nodeEdit = loader.getController();
+        nodeEdit.setWorld(this.world);
         this.newNodeTabPane.getChildren().add(root);
 
         System.out.println("Newformloadetto!!!");
@@ -93,8 +96,8 @@ public class MainStage {
      * @param actionEvent
      */
     public void selectExistingWorld(ActionEvent actionEvent) throws IOException {
-        // @todo: Load the world data from world files or databases.
-        this.setWorkingWorld(new World("Dummy World", "This is a dummy world for a dummy project"));
+        World world = new WorldMapper().apply((WorldEntity) this.selectWorld.getValue());
+        this.setWorkingWorld(world);
     }
 
     /**

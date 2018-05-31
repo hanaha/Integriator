@@ -14,8 +14,14 @@ public class World {
     public World(String name, String description) {
         this.setName(name);
         this.setDescription(description);
-        this.setRoot(new Node(this));
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return ((World)obj).name.equals(this.name);
+    }
+
+    // @todo: Override hashCode()
 
     /* Getters and setters */
 

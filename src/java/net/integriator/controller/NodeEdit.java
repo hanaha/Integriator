@@ -4,6 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import net.integriator.data.Node;
+import net.integriator.data.SessionManager;
+import net.integriator.data.World;
+import net.integriator.data.entity.NodeEntity;
 
 /**
  * Node manipulation controller.
@@ -22,6 +27,8 @@ public class NodeEdit {
     public ContextMenu varAutocompleteContextMenu;
     public Button saveNodeButton;
     public TextArea description;
+    public VBox potentialParentVbox;
+    private World world;
 
     public void findNodeAutocomplete(InputMethodEvent inputMethodEvent) {
 
@@ -47,7 +54,14 @@ public class NodeEdit {
 
     }
 
-    public void saveNode(ActionEvent actionEvent) {
-        // @todo: save the given node, either creating new or editing an existing one.
+    public void setWorld(World world) {
+        this.world = world;
     }
+
+    public void saveNewNode(ActionEvent actionEvent) {
+        Node node = new Node(this.world, this.parentNode.getText(), this.title.getText(), this.description.getText());
+        NodeEntity nodeEntity = new NodeEntity(node);
+        SessionManager.saveEntity(nodeEntity);
+    }
+
 }

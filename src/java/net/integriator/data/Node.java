@@ -10,13 +10,20 @@ public class Node {
     private World world;
     private List<String> affectedVariables = new ArrayList<>();
     private String title;
+    private String description;
+    private String parentNodeId;
     /**
      * Constructor for a node in the world.
      *
      * @param world Current game world.
      */
-    public Node(World world) {
+    public Node(World world, String parentNodeId, String title, String description) {
         this.setWorld(world);
+        this.setParentNodeId(parentNodeId);
+        this.setTitle(title);
+        this.setDescription(description);
+        // @todo: Add affected variable list to the node.
+//        this.setAffectedVariables(affectedVariables);
     }
 
     /* Getters and setters */
@@ -33,7 +40,7 @@ public class Node {
         return affectedVariables;
     }
 
-    public void setAffectedVariables(ArrayList affectedVariables) {
+    public void setAffectedVariables(List affectedVariables) {
         this.affectedVariables = affectedVariables;
     }
 
@@ -45,6 +52,21 @@ public class Node {
         this.title = title;
     }
 
+    public String getParentNodeId() {
+        return parentNodeId;
+    }
+
+    public void setParentNodeId(String parentNodeId) {
+        this.parentNodeId = parentNodeId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     /* Variable operations */
 
     /**
