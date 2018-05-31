@@ -38,6 +38,7 @@
 
         <mapping class="net.integriator.hibernateTest.Event"/>
         <mapping class="net.integriator.data.entity.WorldEntity"/>
+        <mapping class="net.integriator.data.entity.NodeEntity"/>
 
     </session-factory>
 

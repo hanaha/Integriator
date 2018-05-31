@@ -9,7 +9,7 @@ import java.util.List;
 public class Node {
     private World world;
     private List<String> affectedVariables = new ArrayList<>();
-
+    private String title;
     /**
      * Constructor for a node in the world.
      *
@@ -35,6 +35,14 @@ public class Node {
 
     public void setAffectedVariables(ArrayList affectedVariables) {
         this.affectedVariables = affectedVariables;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /* Variable operations */
