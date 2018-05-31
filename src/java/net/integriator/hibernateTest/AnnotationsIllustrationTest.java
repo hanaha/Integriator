@@ -21,7 +21,7 @@
  * 51 Franklin Street, Fifth Floor
  * Boston, MA  02110-1301  USA
  */
-package hibernateTest;
+package net.integriator.hibernateTest;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

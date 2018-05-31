@@ -1,8 +1,8 @@
-package controller;
+package net.integriator.controller;
 
-import data.SessionManager;
-import data.World;
-import data.entity.WorldEntity;
+import net.integriator.data.SessionManager;
+import net.integriator.data.World;
+import net.integriator.data.entity.WorldEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

@@ -36,8 +36,8 @@
 
         <!--<mapping resource="org/hibernate/tutorial/hbm/Event.hbm.xml"/>-->
 
-        <mapping class="hibernateTest.Event"/>
-        <mapping class="data.entity.WorldEntity"/>
+        <mapping class="net.integriator.hibernateTest.Event"/>
+        <mapping class="net.integriator.data.entity.WorldEntity"/>
 
     </session-factory>
 
