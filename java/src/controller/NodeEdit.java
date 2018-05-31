@@ -20,6 +20,8 @@ public class NodeEdit {
     public TableColumn varRemove;
     public ContextMenu nodeAutocompleteContextMenu;
     public ContextMenu varAutocompleteContextMenu;
+    public Button saveNodeButton;
+    public TextArea description;
 
     public void findNodeAutocomplete(InputMethodEvent inputMethodEvent) {
 

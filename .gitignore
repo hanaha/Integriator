@@ -1,3 +1,4 @@
 # Never mind these files and folders.
 .idea/**
 out/**
+JavaFxApplication.iml

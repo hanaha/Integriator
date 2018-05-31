@@ -16,21 +16,21 @@ public class SessionManager {
 
     private static SessionManager instance = new SessionManager();
 
-    public SessionManager(){
+    public SessionManager() {
         instance = this;
         this.setUp();
     }
 
     private Session currentSession = null;
 
-    public static <E extends CustomEntity> void saveEntity(E entity){
+    public static <E extends CustomEntity> void saveEntity(E entity) {
         Session session = startSession();
         session.save(entity);
         SessionManager.stopSession();
     }
 
-    public static Session startSession(){
-        if (instance.currentSession != null){
+    public static Session startSession() {
+        if (instance.currentSession != null) {
             instance.currentSession.close();
             instance.currentSession = null;
         }
@@ -53,42 +53,41 @@ public class SessionManager {
                 .configure() // configures settings from hibernate.cfg.xml
                 .build();
         try {
-            sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
-        }
-        catch (Exception e) {
+            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        } catch (Exception e) {
             // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
             // so destroy it manually.
-            StandardServiceRegistryBuilder.destroy( registry );
+            StandardServiceRegistryBuilder.destroy(registry);
         }
     }
 
     protected void tearDown() throws Exception {
-        if ( sessionFactory != null ) {
+        if (sessionFactory != null) {
             sessionFactory.close();
         }
     }
 
-    @SuppressWarnings({ "unchecked" })
+    @SuppressWarnings({"unchecked"})
     public void testBasicUsage() {
-        // create a couple of events...
+        // Create a couple of events...
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save( new Event( "Our very first event!", new Date() ) );
-        session.save( new Event( "A follow up event", new Date() ) );
+        session.save(new Event("Our very first event!", new Date()));
+        session.save(new Event("A follow up event", new Date()));
         session.getTransaction().commit();
         session.close();
 
-        // now lets pull events from the database and list them
+        // Now let's pull events from the database and list them.
         session = sessionFactory.openSession();
         session.beginTransaction();
-        List result = session.createQuery( "from Event" ).list();
-        for ( Event event : (List<Event>) result ) {
-            System.out.println( "Event (" + event.getDate() + ") : " + event.getTitle() );
+        List result = session.createQuery("from Event").list();
+        for (Event event : (List<Event>) result) {
+            System.out.println("Event (" + event.getDate() + ") : " + event.getTitle());
         }
         session.getTransaction().commit();
         session.close();
 
-        if ( sessionFactory != null ) {
+        if (sessionFactory != null) {
             sessionFactory.close();
         }
     }

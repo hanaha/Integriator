@@ -40,6 +40,8 @@ public class MainStage {
     public Button actionExecuteButton;
     public Button addVariableButton;
     public TextField addVariableTextField;
+    public ProgressIndicator selectProgress;
+    public Tab tabNewVariable;
 
     private World world;
     public AnchorPane root;
@@ -103,10 +105,9 @@ public class MainStage {
     public void createNewWorld(ActionEvent actionEvent) throws IOException {
         World world = new World(this.name.getText(), this.description.getText());
 
-        Session session = SessionManager.startSession();
-        WorldEntity worldEntity = new WorldEntity(world.getName(), world.getDescription());
-        session.save(worldEntity);
-        SessionManager.stopSession();
+        // Save away the new world.
+        WorldEntity worldEntity = new WorldEntity(world);
+        SessionManager.saveEntity(worldEntity);
 
         this.setWorkingWorld(world);
     }
@@ -149,8 +150,7 @@ public class MainStage {
     }
 
     private void populateVariableActions() {
-        actionOptionsComboBox.getItems().clear();
-        actionOptionsComboBox.getItems().addAll("Delete selected");
+        // @todo: list the actions for variables on the world's variable list.
     }
 
     public void addVariable(ActionEvent actionEvent) {

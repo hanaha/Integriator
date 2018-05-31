@@ -1,11 +1,13 @@
 package data.entity;
 
+import data.World;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "worlds" )
+@Table(name = "worlds")
 public class WorldEntity implements CustomEntity {
 
     private String name;
@@ -14,9 +16,9 @@ public class WorldEntity implements CustomEntity {
     public WorldEntity() {
     }
 
-    public WorldEntity(String name, String description) {
-        this.name = name;
-        this.description = description;
+    public WorldEntity(World world) {
+        this.name = world.getName();
+        this.description = world.getDescription();
     }
 
     @Id
