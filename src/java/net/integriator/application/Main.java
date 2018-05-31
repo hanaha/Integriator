@@ -1,6 +1,6 @@
-package application;
+package net.integriator.application;
 
-import controller.MainStage;
+import net.integriator.controller.MainStage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +16,7 @@ public class Main extends Application {
         MainStage controller = loader.getController();
         controller.setStage(primaryStage);
         primaryStage.setTitle("Integriator");
-        root.getStylesheets().add("styles/main.css");
+        root.getStylesheets().add("../styles/main.css");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

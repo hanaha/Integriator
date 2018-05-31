@@ -1,4 +1,4 @@
-package data;
+package net.integriator.data;
 
 /**
  * Variable class for populating the variable list table.

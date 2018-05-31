@@ -1,7 +1,7 @@
-package data;
+package net.integriator.data;
 
-import data.entity.CustomEntity;
-import hibernateTest.Event;
+import net.integriator.data.entity.CustomEntity;
+import net.integriator.hibernateTest.Event;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;

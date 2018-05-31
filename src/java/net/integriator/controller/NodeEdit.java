@@ -1,4 +1,4 @@
-package controller;
+package net.integriator.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;

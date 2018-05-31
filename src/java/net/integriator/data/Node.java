@@ -1,4 +1,4 @@
-package data;
+package net.integriator.data;
 
 import java.util.ArrayList;
 import java.util.List;

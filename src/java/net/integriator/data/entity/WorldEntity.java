@@ -1,6 +1,6 @@
-package data.entity;
+package net.integriator.data.entity;
 
-import data.World;
+import net.integriator.data.World;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
