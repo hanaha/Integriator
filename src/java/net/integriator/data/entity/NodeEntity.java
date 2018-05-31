@@ -11,11 +11,14 @@ import javax.persistence.*;
 public class NodeEntity implements CustomEntity {
 
     @ManyToOne
-    @JoinColumn(name="world")
+    @JoinColumn(name = "world")
     private WorldEntity world;
 
     @Id
     private String title;
+
+    private String description;
+    private String parentNodeId;
 
     public NodeEntity() {
     }
@@ -29,9 +32,11 @@ public class NodeEntity implements CustomEntity {
         SessionManager.stopSession();
 
         this.title = node.getTitle();
+        this.description = node.getDescription();
+        this.parentNodeId = node.getParentNodeId();
     }
 
-    public WorldEntity getWorld() {
+    public WorldEntity getWorldEntity() {
         return world;
     }
 
@@ -45,5 +50,21 @@ public class NodeEntity implements CustomEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getParentNodeId() {
+        return parentNodeId;
+    }
+
+    public void setParentNodeId(String parentNodeId) {
+        this.parentNodeId = parentNodeId;
     }
 }
