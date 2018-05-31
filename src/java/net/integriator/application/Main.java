@@ -1,11 +1,12 @@
 package net.integriator.application;
 
-import net.integriator.controller.MainStage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.integriator.controller.MainStage;
+import net.integriator.data.SessionManager;
 
 public class Main extends Application {
 
@@ -18,6 +19,13 @@ public class Main extends Application {
         primaryStage.setTitle("Integriator");
         root.getStylesheets().add("../styles/main.css");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setOnCloseRequest(we -> {
+            try {
+                SessionManager.tearDown();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
         primaryStage.show();
     }
 

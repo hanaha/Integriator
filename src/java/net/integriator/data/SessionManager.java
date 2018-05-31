@@ -61,10 +61,11 @@ public class SessionManager {
         }
     }
 
-    protected void tearDown() throws Exception {
-        if (sessionFactory != null) {
-            sessionFactory.close();
-        }
+    public static void tearDown() throws Exception {
+        instance.sessionFactory.close();
+//        if (sessionFactory != null) {
+//            sessionFactory.close();
+//        }
     }
 
     @SuppressWarnings({"unchecked"})
